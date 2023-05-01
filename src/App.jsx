@@ -69,7 +69,7 @@ const App = () => {
                     <button onClick={handleNewUser} className="generate-button">
                         Generate!
                     </button>
-                    <button onClick={handleTenNewUsers} className="generate-button">
+                    <button onClick={() => handleTenNewUsers(10)} className="generate-button">
                         Generate 10!
                     </button>
                 </div>
