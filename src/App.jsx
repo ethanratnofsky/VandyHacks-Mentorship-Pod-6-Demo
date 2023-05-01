@@ -1,58 +1,39 @@
 import { useState } from "react";
 import { faker } from "@faker-js/faker";
-import "./App.css";
-
-// /**
-//  * option 1: (dinosaur era)
-//  */
-// function myFunction(input1) {
-//     return 42;
-// }
-
-// /**
-//  * option 2: (ES6)
-//  *
-//  * ZI + JACOB + ETHAN LIKEs THIS BETTER
-//  */
-// const myFunction2 = (input1) => {
-//     return 42;
-// };
+import "./App.styles.css";
+import ContactCard from "./ContactCard";
 
 const App = () => {
-    const [user, setUser] = useState({
+
+    // Current user and default values
+    const [users, setUsers] = useState([{
         firstName: "Joe",
         lastName: "Ratnofsky",
         email: "zi@gmail.com",
         phone: "+1234567890",
-    });
+    }]);
 
-    /*
+    // Generate a new user
+    const handleNewUser = () => {
+        const first = faker.name.firstName();
+        const last = faker.name.lastName();
 
-      user = 10 <- NOOOOOO
-      setUser(10) <- :))
-
-    */
+        setUsers(prev => [...prev, {
+            firstName: first,
+            lastName: last,
+            email: faker.internet.email(first, last),
+            phone: faker.phone.number("631-###-####"),
+        }]);
+    }
 
     return (
         <>
-            <h2>Contact</h2>
-            <p>First name: {user.firstName}</p>
-            <p>Last name: {user.lastName}</p>
-            <p>Email: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            <button
-                onClick={() => {
-                    const first = faker.name.firstName();
-                    const last = faker.name.lastName();
-
-                    setUser({
-                        firstName: first,
-                        lastName: last,
-                        email: faker.internet.email(first, last),
-                        phone: faker.phone.number("631-###-####"),
-                    });
-                }}
-            >
+            <div className="card-list">
+                {users.map((user, index) => (
+                    <ContactCard user={user} index={index} />
+                ))}
+            </div>
+            <button onClick={handleNewUser}>
                 Generate!
             </button>
         </>

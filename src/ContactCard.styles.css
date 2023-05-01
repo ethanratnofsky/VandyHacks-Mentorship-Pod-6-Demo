@@ -1,0 +1,9 @@
+.contact-card-body {
+  border: 2px solid grey;
+  background-color: aliceblue;
+  padding: 10px 20px 30px 20px;
+  border-radius: 20px;
+  color: #333333;
+  margin: 40px;
+  min-width: 300px;
+}
