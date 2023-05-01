@@ -31,7 +31,7 @@ const App = () => {
     }
 
     const clearList = () => {
-        // TODO -> clear the list
+        setUsers([]);
     }
 
     const handleTenNewUsers = () => {
