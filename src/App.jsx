@@ -26,17 +26,38 @@ const App = () => {
         }]);
     }
 
+    const deleteCard = (index) => {
+        // TODO -> remove the user at the specific index
+    }
+
+    const clearList = () => {
+        // TODO -> clear the list
+    }
+
+    const handleTenNewUsers = () => {
+        // TODO -> generate 10 new users
+    }
+
     return (
-        <>
-            <div className="card-list">
-                {users.map((user, index) => (
-                    <ContactCard user={user} index={index} />
-                ))}
-            </div>
-            <button onClick={handleNewUser}>
-                Generate!
-            </button>
-        </>
+            <>
+                { /* TODO -> Display how many users there are */}
+                <div className="card-list">
+                    {users.map((user, index) => (
+                        <ContactCard key={index} user={user} index={index} deleteCard={deleteCard} />
+                    ))}
+                    <div className='generate-button-container contact-card-body'>
+                        <button onClick={handleNewUser} className='generate-button'>
+                        Generate!
+                        </button>
+                        <button onClick={handleTenNewUsers} className='generate-button'>
+                        Generate 10!
+                        </button>
+                    </div>
+                </div>
+                <button onClick={clearList}>Clear list</button>
+            </>
+
+        
     );
 };
 
