@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import "./App.styles.css";
 import ContactCard from "./ContactCard";
@@ -48,9 +48,18 @@ const App = () => {
     }
   };
 
+  // change the tab title to reflect the number of users
+  useEffect(() => {
+    document.title = `${users.length} users`;
+  }, [users]);
+
   return (
     <>
-      {/* TODO -> Display how many users there are */}
+      <div className="top-bar">
+        <div className="app-header">
+          <h1>Contact Generator</h1>
+        </div>
+      </div>
       <div className="card-list">
         {users.map((user, index) => (
           <ContactCard
@@ -64,10 +73,7 @@ const App = () => {
           <button onClick={handleNewUser} className="generate-button">
             Generate!
           </button>
-          <button
-            onClick={() => handleTenNewUsers(10)}
-            className="generate-button"
-          >
+          <button onClick={handleTenNewUsers} className="generate-button">
             Generate 10!
           </button>
         </div>
