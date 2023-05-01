@@ -45,7 +45,11 @@ const App = () => {
 
     return (
             <>
-                { /* TODO -> Display how many users there are */}
+                <div className="top-bar">
+                    <div className="app-header">
+                        <h1>Contact Generator</h1>
+                    </div>
+                </div>
                 <div className="card-list">
                     {users.map((user, index) => (
                         <ContactCard key={index} user={user} index={index} deleteCard={deleteCard} />
