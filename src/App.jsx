@@ -4,169 +4,79 @@ import "./App.styles.css";
 import ContactCard from "./ContactCard";
 
 const App = () => {
-  // Current user and default values
-  const [users, setUsers] = useState([
-    {
-      firstName: "Joe",
-      lastName: "Ratnofsky",
-      email: "zi@gmail.com",
-      phone: "+1234567890",
-    },
-  ]);
-
-  // Generate a new user
-  const handleNewUser = () => {
-    const first = faker.name.firstName();
-    const last = faker.name.lastName();
-
-    setUsers((prev) => [
-      ...prev,
-      {
-        firstName: first,
-        lastName: last,
-        email: faker.internet.email(first, last),
-        phone: faker.phone.number("631-###-####"),
-      },
+    // Current user and default values
+    const [users, setUsers] = useState([
+        {
+            firstName: "Joe",
+            lastName: "Ratnofsky",
+            email: "zi@gmail.com",
+            phone: "+1234567890",
+        },
     ]);
-  };
 
-  const deleteCard = (index) => {
-    // TODO -> remove the user at the specific index
-<<<<<<< HEAD
-    setUsers((prev) => prev.filter((user, i) => i !== index));
-  };
+    // Generate a new user
+    const handleNewUser = () => {
+        const first = faker.name.firstName();
+        const last = faker.name.lastName();
 
-  const clearList = () => {
-    // TODO -> clear the list
-  };
+        setUsers((prev) => [
+            ...prev,
+            {
+                firstName: first,
+                lastName: last,
+                email: faker.internet.email(first, last),
+                phone: faker.phone.number("631-###-####"),
+            },
+        ]);
+    };
 
-  const handleTenNewUsers = () => {
-    // TODO -> generate 10 new users
-  };
-=======
-  };
+    const deleteCard = (index) => {
+        // TODO -> remove the user at the specific index
+        setUsers((prev) => prev.filter((user, i) => i !== index));
+    };
 
-  const clearList = () => {
-    // TODO -> clear the list
-  };
+    const handleTenNewUsers = (num) => {
+        if (num == 0) {
+            return;
+        } else {
+            --num;
+            handleNewUser();
+            handleTenNewUsers(num);
+        }
+    };
 
-  const handleTenNewUsers = (num) => {
-    if (num == 0) {
-      return;
-    } else {
-      --num;
-      handleNewUser();
-      handleTenNewUsers(num);
-    }
-  };
-
-  // change the tab title to reflect the number of users
-  useEffect(() => {
-    document.title = `${users.length} users`;
-  }, [users]);
-
-<<<<<<< HEAD
-  return (
-    <>
-      <div className="top-bar">
-        <div className="app-header">
-          <h1>Contact Generator</h1>
-        </div>
-      </div>
-      <div className="card-list">
-        {users.map((user, index) => (
-          <ContactCard
-            key={index}
-            user={user}
-            index={index}
-            deleteCard={deleteCard}
-          />
-        ))}
-        <div className="generate-button-container contact-card-body">
-          <button onClick={handleNewUser} className="generate-button">
-            Generate!
-          </button>
-          <button onClick={handleTenNewUsers} className="generate-button">
-            Generate 10!
-          </button>
-        </div>
-      </div>
-      <button onClick={clearList}>Clear list</button>
-    </>
-  );
-=======
-    const clearList = () => {
-        setUsers([]);
-    }
->>>>>>> main
-
-  // change the tab title to reflect the number of users
-  useEffect(() => {
-    document.title = `${users.length} users`;
-  }, [users]);
-
-<<<<<<< HEAD
-  return (
-    <>
-      <div className="top-bar">
-        <div className="app-header">
-          <h1>Contact Generator</h1>
-        </div>
-      </div>
-      <div className="card-list">
-        {users.map((user, index) => (
-          <ContactCard
-            key={index}
-            user={user}
-            index={index}
-            deleteCard={deleteCard}
-          />
-        ))}
-        <div className="generate-button-container contact-card-body">
-          <button onClick={handleNewUser} className="generate-button">
-            Generate!
-          </button>
-          <button onClick={handleTenNewUsers} className="generate-button">
-            Generate 10!
-          </button>
-        </div>
-      </div>
-      <button onClick={clearList}>Clear list</button>
-    </>
-  );
-=======
     // change the tab title to reflect the number of users
     useEffect(() => {
         document.title = `${users.length} users`;
-    }, [users])
+    }, [users]);
+
+    const clearList = () => {
+        setUsers([]);
+    };
 
     return (
-            <>
-                <div className="top-bar">
-                    <div className="app-header">
-                        <h1>Contact Generator</h1>
-                    </div>
+        <>
+            <div className="top-bar">
+                <div className="app-header">
+                    <h1>Contact Generator</h1>
                 </div>
-                <div className="card-list">
-                    {users.map((user, index) => (
-                        <ContactCard key={index} user={user} index={index} deleteCard={deleteCard} />
-                    ))}
-                    <div className='generate-button-container contact-card-body'>
-                        <button onClick={handleNewUser} className='generate-button'>
+            </div>
+            <div className="card-list">
+                {users.map((user, index) => (
+                    <ContactCard key={index} user={user} index={index} deleteCard={deleteCard} />
+                ))}
+                <div className="generate-button-container contact-card-body">
+                    <button onClick={handleNewUser} className="generate-button">
                         Generate!
-                        </button>
-                        <button onClick={handleTenNewUsers} className='generate-button'>
+                    </button>
+                    <button onClick={handleTenNewUsers} className="generate-button">
                         Generate 10!
-                        </button>
-                    </div>
+                    </button>
                 </div>
-                <button onClick={clearList}>Clear list</button>
-            </>
-
-        
+            </div>
+            <button onClick={clearList}>Clear list</button>
+        </>
     );
->>>>>>> main
->>>>>>> main
 };
 
 export default App;
