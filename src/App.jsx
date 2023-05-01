@@ -32,6 +32,7 @@ const App = () => {
 
   const deleteCard = (index) => {
     // TODO -> remove the user at the specific index
+<<<<<<< HEAD
     setUsers((prev) => prev.filter((user, i) => i !== index));
   };
 
@@ -42,12 +43,29 @@ const App = () => {
   const handleTenNewUsers = () => {
     // TODO -> generate 10 new users
   };
+=======
+  };
+
+  const clearList = () => {
+    // TODO -> clear the list
+  };
+
+  const handleTenNewUsers = (num) => {
+    if (num == 0) {
+      return;
+    } else {
+      --num;
+      handleNewUser();
+      handleTenNewUsers(num);
+    }
+  };
 
   // change the tab title to reflect the number of users
   useEffect(() => {
     document.title = `${users.length} users`;
   }, [users]);
 
+<<<<<<< HEAD
   return (
     <>
       <div className="top-bar">
@@ -76,6 +94,79 @@ const App = () => {
       <button onClick={clearList}>Clear list</button>
     </>
   );
+=======
+    const clearList = () => {
+        setUsers([]);
+    }
+>>>>>>> main
+
+  // change the tab title to reflect the number of users
+  useEffect(() => {
+    document.title = `${users.length} users`;
+  }, [users]);
+
+<<<<<<< HEAD
+  return (
+    <>
+      <div className="top-bar">
+        <div className="app-header">
+          <h1>Contact Generator</h1>
+        </div>
+      </div>
+      <div className="card-list">
+        {users.map((user, index) => (
+          <ContactCard
+            key={index}
+            user={user}
+            index={index}
+            deleteCard={deleteCard}
+          />
+        ))}
+        <div className="generate-button-container contact-card-body">
+          <button onClick={handleNewUser} className="generate-button">
+            Generate!
+          </button>
+          <button onClick={handleTenNewUsers} className="generate-button">
+            Generate 10!
+          </button>
+        </div>
+      </div>
+      <button onClick={clearList}>Clear list</button>
+    </>
+  );
+=======
+    // change the tab title to reflect the number of users
+    useEffect(() => {
+        document.title = `${users.length} users`;
+    }, [users])
+
+    return (
+            <>
+                <div className="top-bar">
+                    <div className="app-header">
+                        <h1>Contact Generator</h1>
+                    </div>
+                </div>
+                <div className="card-list">
+                    {users.map((user, index) => (
+                        <ContactCard key={index} user={user} index={index} deleteCard={deleteCard} />
+                    ))}
+                    <div className='generate-button-container contact-card-body'>
+                        <button onClick={handleNewUser} className='generate-button'>
+                        Generate!
+                        </button>
+                        <button onClick={handleTenNewUsers} className='generate-button'>
+                        Generate 10!
+                        </button>
+                    </div>
+                </div>
+                <button onClick={clearList}>Clear list</button>
+            </>
+
+        
+    );
+>>>>>>> main
+>>>>>>> main
 };
 
 export default App;
