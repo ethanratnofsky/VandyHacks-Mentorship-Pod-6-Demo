@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import "./App.styles.css";
 import ContactCard from "./ContactCard";
@@ -37,6 +37,11 @@ const App = () => {
     const handleTenNewUsers = () => {
         // TODO -> generate 10 new users
     }
+
+    // change the tab title to reflect the number of users
+    useEffect(() => {
+        document.title = `${users.length} users`;
+    }, [users])
 
     return (
             <>
